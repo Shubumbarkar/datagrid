@@ -1,0 +1,2 @@
+@datatables.net:registry=https://npm.datatables.net/
+//npm.datatables.net/:_authToken=CF88009113F04FC5DFC6941A60A9C1D80C8213362C66D52014CE179D27CB1708

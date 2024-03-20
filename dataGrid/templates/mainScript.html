@@ -1,0 +1,68 @@
+{% load static %}
+
+<!--DataTables JS & CSS-->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.6/datatables.min.css"/>
+
+<!-- DataTables JavaScript -->
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.6/datatables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script> 
+{% comment %} 
+<script src="{% static "https://cdn.datatables.net/2.0.2/js/dataTables.jqueryui.min.js" %}"></script>
+<script src="{% static "https://cdn.datatables.net/2.0.2/js/dataTables.min.js" %}"></script> {% endcomment %}
+<!--DataTbles JS and CSS End-->
+<!--Plugins-->
+<script src="{% static "/Editor-2.3.2/js/dataTables.editor.js" %}"></script>
+<script src="{% static "/Editor-2.3.2/js/editor.dataTables.js" %}"></script>
+<!--Plugins End-->
+<!--DataTables Buttons Plugin-->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+<!--DataTables Buttons Plugin End-->
+<!--Editor Plugin for CRUD Operations-->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/editor/2.3.2/css/editor.dataTables.min.css">
+<script src="https://cdn.datatables.net/editor/2.3.2/js/dataTables.editor.min.js"></script>
+<script>
+var busDataArray = [
+  {% for bus_data in bus_data %}
+    {
+      "name": "{{ bus_data.name }}",
+      "color": "{{ bus_data.color }}"
+    },
+  {% endfor %}
+];
+console.log(busDataArray)
+const editor = new DataTable.Editor({
+    fields: [
+        {
+            label: 'First name:',
+            name: 'first_name'
+        },
+        {
+            label: 'Last name:',
+            name: 'last_name'
+        },
+        
+    ],
+    table: '#example'
+});  
+new DataTable('#example', {
+    data: busDataArray,
+    columns: [
+        { data: 'name' },
+        { data: 'color'}
+    ],
+    layout: {
+        topStart: {
+            buttons: [
+                { extend: 'create', editor: editor },
+                { extend: 'edit', editor: editor },
+                { extend: 'remove', editor: editor }
+            ]
+        }
+    },
+});
+</script> 

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_style %}
+{% endblock extra_style %}
+
+{% block content %}
+<div class="container">
+    {% comment %} <table id="example" class="display table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Bus Name</th>
+                <th>Color</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bus_data in bus_data  %}
+            <tr>
+               <td>{{bus_data.name}}</td>
+               <td>{{bus_data.color}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Bus Name</th>
+                <th>Color</th>
+            </tr>
+        </tfoot>
+    </table> {% endcomment %}
+   
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Color</th>
+            </tr>
+        </thead>
+      
+    </table>
+</div>
+{% endblock content %}
+
+
+
+
+
+
+
+
